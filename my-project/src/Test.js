@@ -12,11 +12,13 @@ class Test extends React.Component {
                 name: "Mike",
                 lastname: "Brown",
                 response: []
-            }
+            },
+
+            someValue: ""
         };
 
         this.arr = [1,2,3,4,5,6,7,8, 12];
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
         this.areEventNumbers = this.areEventNumbers.bind(this);
     }
 
@@ -32,6 +34,7 @@ class Test extends React.Component {
     //         });
     // }
 
+    /* This method executes AJAX call */
     componentDidMount() {
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then((response) => {
@@ -41,12 +44,13 @@ class Test extends React.Component {
             });
     }
 
-
+    /* Simple method to alert a name on the page when button is clicked */
     handleClick() {
     alert(this.state.person.name);
     }
 
 
+    /* This method will get ONLY even numbers from array */
     areEventNumbers(){
        let evenNumbers = this.arr.filter((item) =>{
            return item % 2 === 0;
@@ -60,6 +64,13 @@ class Test extends React.Component {
         this.setState({showReply: !this.state.showReply})
     }
 
+
+    /*  This method changes values from dropDown Select Element */
+    change(event){
+    this.setState({someValue: event.target.value});
+    }
+
+
     render() {
         const person = this.state.person;
         //debugger; // Run the code with your console open and see what
@@ -68,10 +79,21 @@ class Test extends React.Component {
                   // execution each time it's hit.
         return (
             <div>
+                <br/><br/>
                 <div>
-                    <p>Some text</p>
+                    <select id="lang" onChange={this.change.bind(this)} value={this.state.someValue}>
+                        <option value="select">Select</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                    </select>
+                    <p></p>
+                    <p>{this.state.someValue}</p>
+                </div>
+
+
+                <div>
                     <a onClick={this.showAndHide.bind(this)} href='#'>Click to Show and Hide</a>
-                    {alert("Show and Hide")}
+                    {/*{alert("Show and Hide")}*/}
                 </div>
                 <hr/>
                 <div>
@@ -89,7 +111,7 @@ class Test extends React.Component {
                 </div>
                 <hr/>
 
-                <button onClick={this.handleClick}>
+                <button onClick={this.handleClick.bind(this)}>
                     Say hello
                 </button>
                 <hr/>
