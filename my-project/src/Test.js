@@ -10,7 +10,7 @@ class Test extends React.Component {
             showReply: false,
             person: {
                 name: "Mike",
-                lastname: "Brown",
+                lastname: "Brownsssabcd",
                 response: []
             }
         };
@@ -48,7 +48,7 @@ class Test extends React.Component {
 
 
     areEventNumbers(){
-       var evenNumbers = this.arr.filter((item) =>{
+       let evenNumbers = this.arr.filter((item) =>{
            return item % 2 === 0;
        })
 
