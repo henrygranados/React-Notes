@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // );
 
     ReactDOM.render(<div>
+        <hr/>
         <Counter/>
         <Test/>
     </div>, document.getElementById("mount"));
