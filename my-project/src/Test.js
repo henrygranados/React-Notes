@@ -9,7 +9,7 @@ class Test extends React.Component {
             showReply: false,
             person: {
                 name: "Mike",
-                lastname: "Brownx",
+                lastname: "Brown",
                 response: []
             },
 
